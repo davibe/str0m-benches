@@ -1,0 +1,23 @@
+[package]
+name = "str0m-bench"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+str0m = { git = "https://github.com/algesten/str0m", rev = "ff331bd9", version = "0.4.1", features = ["_internal_test_exports"] }
+# str0m = { path = "../str0m" }
+# _str0m_test = { path = "../str0m/_str0m_test" } # dummy package that enables "_internal_test_exports"
+
+[dev-dependencies]
+fastrand = "2.0.1"
+tracing = "0.1.37"
+tracing-subscriber = { version = "0.3.16", features = ["env-filter", "std"] }
+pcap-file = "2.0.0"
+# criterion = "0.5"
+divan = "0.1.11"
+
+[[bench]]
+name = "bench0"
+harness = false
