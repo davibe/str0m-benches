@@ -3,12 +3,11 @@ name = "str0m-bench"
 version = "0.1.0"
 edition = "2021"
 
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+[features]
+allocations = []
 
 [dependencies]
-str0m = { git = "https://github.com/algesten/str0m", rev = "ff331bd9", version = "0.4.1", features = ["_internal_test_exports"] }
-# str0m = { path = "../str0m" }
-# _str0m_test = { path = "../str0m/_str0m_test" } # dummy package that enables "_internal_test_exports"
+str0m = { git = "https://github.com/algesten/str0m", rev = "ff331bd958bb91ad6d189e5aa32e550883c8b036", features = ["_internal_test_exports"] }
 
 [dev-dependencies]
 fastrand = "2.0.1"
