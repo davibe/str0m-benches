@@ -10,6 +10,8 @@ allocations = []
 str0m = { git = "https://github.com/algesten/str0m", rev = "ff331bd958bb91ad6d189e5aa32e550883c8b036", features = ["_internal_test_exports"] }
 
 [dev-dependencies]
+tikv-jemallocator = "0.5"
+tikv-jemalloc-ctl = "0.5"
 fastrand = "2.0.1"
 tracing = "0.1.37"
 tracing-subscriber = { version = "0.3.16", features = ["env-filter", "std"] }

@@ -5,9 +5,14 @@ use common::pair::LtoR;
 
 use divan::{black_box, Bencher};
 
+#[cfg(not(feature = "allocations"))]
+use tikv_jemallocator::Jemalloc;
+#[cfg(not(feature = "allocations"))]
+#[global_allocator]
+static GLOBAL: Jemalloc = Jemalloc;
+
 #[cfg(feature = "allocations")]
 use divan::AllocProfiler;
-
 #[cfg(feature = "allocations")]
 #[global_allocator]
 static ALLOC: AllocProfiler = AllocProfiler::system();
