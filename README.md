@@ -11,15 +11,17 @@ The benches rely on the str0m "_internal_test_exports" feature.
      Running benches/bench0.rs (target/release/deps/bench0-9d00dcf40629382d)
 Timer precision: 41 ns
 bench0         fastest       │ slowest       │ median        │ mean          │ samples │ iters
-├─ vp8_unidir  217.3 ms      │ 378.7 ms      │ 272.2 ms      │ 275.1 ms      │ 100     │ 100
-╰─ vp9_unidir  691.9 ms      │ 871.3 ms      │ 745.9 ms      │ 751.3 ms      │ 100     │ 100
+├─ vp8_rtp     131.2 ms      │ 333.1 ms      │ 184.1 ms      │ 192 ms        │ 100     │ 100
+├─ vp8_sample  130.9 ms      │ 314.1 ms      │ 185.6 ms      │ 190.3 ms      │ 100     │ 100
+├─ vp9_rtp     143.7 ms      │ 318.5 ms      │ 201.5 ms      │ 206.9 ms      │ 100     │ 100
+╰─ vp9_sample  160.6 ms      │ 336.5 ms      │ 211 ms        │ 214 ms        │ 100     │ 100
 
 
-√ str0m-benches (git)-[master]- # cargo bench vp8 -F allocations
+√ str0m-benches (git)-[master]- # cargo bench vp8_rtp -F allocations
      Running benches/bench0.rs (target/release/deps/bench0-51629209bf181d93)
 Timer precision: 41 ns
 bench0         fastest       │ slowest       │ median        │ mean          │ samples │ iters
-╰─ vp8_unidir  228.6 ms      │ 469.2 ms      │ 278.8 ms      │ 286.1 ms      │ 100     │ 100
+╰─ vp8_rtp     228.6 ms      │ 469.2 ms      │ 278.8 ms      │ 286.1 ms      │ 100     │ 100
                alloc:        │               │               │               │         │
                  464161      │ 463873        │ 464161        │ 459468        │         │
                  253.7 MB    │ 253.3 MB      │ 253.7 MB      │ 251.1 MB      │         │

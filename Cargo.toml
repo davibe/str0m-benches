@@ -7,7 +7,8 @@ edition = "2021"
 allocations = []
 
 [dependencies]
-str0m = { git = "https://github.com/algesten/str0m", rev = "ff331bd958bb91ad6d189e5aa32e550883c8b036", features = ["_internal_test_exports"] }
+# str0m = { git = "https://github.com/algesten/str0m", rev = "ff331bd958bb91ad6d189e5aa32e550883c8b036", features = ["_internal_test_exports"] }
+str0m = { path = "../str0m", features = ["_internal_test_exports"] }
 
 [dev-dependencies]
 tikv-jemallocator = "0.5"

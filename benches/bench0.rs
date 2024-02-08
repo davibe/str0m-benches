@@ -1,5 +1,3 @@
-// Add the necessary dependencies in your Cargo.toml file:
-
 mod common;
 use common::pair::LtoR;
 
@@ -17,8 +15,8 @@ use divan::AllocProfiler;
 #[global_allocator]
 static ALLOC: AllocProfiler = AllocProfiler::system();
 
-#[divan::bench(threads)]
-pub fn vp8_unidir(bencher: Bencher) {
+#[divan::bench]
+pub fn vp8_rtp(bencher: Bencher) {
     let server = LtoR::with_vp8_input();
     let server_ref = &server;
 
@@ -27,9 +25,36 @@ pub fn vp8_unidir(bencher: Bencher) {
     });
 }
 
-#[divan::bench(threads)]
-pub fn vp9_unidir(bencher: Bencher) {
+#[divan::bench]
+pub fn vp9_rtp(bencher: Bencher) {
     let server = LtoR::with_vp9_input();
+    
+    let server_ref = &server;
+
+    bencher.bench_local(|| {
+       let _ = black_box(black_box(server_ref).run().expect("error")); 
+    });
+}
+
+#[divan::bench]
+pub fn vp8_sample(bencher: Bencher) {
+    let server = LtoR::with_vp8_input();
+    let mds = server.rtp_to_mediadata().expect("media data events");
+
+    let server = LtoR::with_samples(mds);
+    let server_ref = &server;
+
+    bencher.bench_local(|| {
+       let _ = black_box(black_box(server_ref).run().expect("error")); 
+    });
+}
+
+#[divan::bench]
+pub fn vp9_sample(bencher: Bencher) {
+    let server = LtoR::with_vp9_input();
+    let mds = server.rtp_to_mediadata().expect("media data events");
+
+    let server = LtoR::with_samples(mds);
     let server_ref = &server;
 
     bencher.bench_local(|| {
